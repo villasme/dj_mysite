@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+    <style>
+        .tip {
+            font-size: 30px;
+            font-weight: 700;
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        {% if error_message %}
+            <div class="tip">
+                {{ error_message }}
+            </div>
+        {% endif %}
+
+        <h1>{{ question.question_text }}</h1>
+        <form action="{% url 'polls:vote' question.id %}" method="post">
+            {% csrf_token %}
+            {% for choice in question.choice_set.all %}
+                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br/>
+            {% endfor %}
+            <input type="submit" value="Vote">
+        </form>
+    </div>
+</body>
+</html>
