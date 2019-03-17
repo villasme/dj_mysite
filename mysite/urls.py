@@ -22,9 +22,13 @@ from rest_framework import routers, documentation
 from goods import views as good_views
 from mysite.settings import MEDIA_ROOT
 
-
 router = routers.DefaultRouter()
 router.register(r'goodsinfo', good_views.GoodInfoView, base_name='goods-info')
+# viewSet 默认绑定 git: list 所以这里先不配置
+router.register(r'goods', good_views.GoodsViewSet, base_name='goods')
+
+# 如果不用router 绑定 viewset 需要在 as_view 中进行设置
+# good_list = good_views.GoodsViewSet.as_view({'get': 'list'})
 
 
 urlpatterns = [
@@ -32,6 +36,6 @@ urlpatterns = [
     path('polls/', include('polls.urls', namespace='polls')),
     re_path(r'xadmin/', xadmin.site.urls),
     re_path(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
-    # re_path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    # re_path(r'docs/', documentation.include_docs_urls(title='我的服务API')),
+    re_path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    re_path(r'docs/', documentation.include_docs_urls(title='我的服务API')),
 ]
