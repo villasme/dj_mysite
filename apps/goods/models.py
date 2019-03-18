@@ -26,14 +26,14 @@ class Good(models.Model):
     """
     商品类
     """
-    goodsName = models.CharField(max_length=50, verbose_name="商品名称")
-    goodsNum = models.IntegerField(default=0, verbose_name="商品库存")
-    goodsPrice = models.IntegerField(default=0, verbose_name="商品价格")
-    goodsSpecId = models.CharField(max_length=200, verbose_name="商品规格")
-    goodsImg = models.ImageField(max_length=200, upload_to='goods/', null=True, blank=True, verbose_name="商品图")
-    add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
+    goodsName = models.CharField(max_length=50, verbose_name="商品名称", help_text="商品名称")
+    goodsNum = models.IntegerField(default=0, verbose_name="商品库存", help_text="商品库存")
+    goodsPrice = models.IntegerField(default=0, verbose_name="商品价格", help_text="商品价格")
+    goodsSpecId = models.CharField(max_length=200, verbose_name="商品规格", help_text="商品规格")
+    goodsImg = models.ImageField(max_length=200, upload_to='goods/', null=True, blank=True, verbose_name="商品图", help_text="商品图")
+    add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间", help_text="添加时间")
     brands = models.ForeignKey(GoodBrand, related_name='goods', null=True, blank=True, verbose_name="品牌",
-                               on_delete=models.CASCADE)
+                               on_delete=models.CASCADE, help_text="品牌")
 
     class Meta:
         verbose_name = '商品'
