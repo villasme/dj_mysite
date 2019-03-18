@@ -129,6 +129,18 @@ USE_L10N = True
 
 USE_TZ = False
 
+# 邮件发送配置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+# 发送邮件的邮箱
+EMAIL_HOST_USER = '13120265987@163.com'
+# 在邮箱中设置的客户端授权密码
+EMAIL_HOST_PASSWORD = 'tong0912'
+DEFAULT_FROM_EMAIL = '13120265987@163.com'
+# 收件人看到的发件人
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
