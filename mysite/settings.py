@@ -29,7 +29,7 @@ SECRET_KEY = '9fh9j6q4ikb*49qhz-sm#!rgt^0%%caf@aw2$^$05#)#5a@4wv'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+AUTH_USER_MODEL = 'users.UserProfile'
 
 # Application definition
 
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
     'polls.apps.PollsConfig',
     'goods.apps.GoodsConfig',
+    'users.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [
