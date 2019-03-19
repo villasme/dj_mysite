@@ -18,6 +18,7 @@ import xadmin
 from django.urls import path, include, re_path
 from django.views.static import serve
 from rest_framework import routers, documentation
+from rest_framework.authtoken import views
 
 from goods import views as good_views
 from mysite.settings import MEDIA_ROOT
@@ -38,4 +39,5 @@ urlpatterns = [
     re_path(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
     re_path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     re_path(r'docs/', documentation.include_docs_urls(title='我的服务API')),
+    re_path(r'^api-token-auth/', views.obtain_auth_token)
 ]
